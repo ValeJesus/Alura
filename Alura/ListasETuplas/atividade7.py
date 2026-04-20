@@ -1,10 +1,13 @@
-nomes =  ['Rocho', 'Buso', 'Fernando']
+resultados = ["Ana", "Carlos", "Pedro"]
+print("Lista original:", resultados)
 
-
-print(nomes)
-nome_errado = input('\nDigite o nome incorreto na lista :')
-nome_correto = input('\nAgora digite o nome correto : ')
-
-nomes[nome_errado] = nome_correto
-
-print(f'\n Lista atualizada{nomes}')
+erro = input("Digite o nome incorreto: ")
+if erro in resultados:
+    correto = input("Digite o nome correto: ")
+    posicao = resultados.index(erro)
+    resultados.remove(erro)
+    resultados.insert(posicao, correto)
+    print(f"O nome {erro} foi substituído por {correto}.")
+    print("Lista atualizada:", resultados)
+else:
+    print("Nome não encontrado.")
