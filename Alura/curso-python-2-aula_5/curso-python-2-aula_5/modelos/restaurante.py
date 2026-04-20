@@ -1,4 +1,6 @@
 from modelos.avaliacao import Avaliacao
+from modelos.cardapio.item_cardapio import ItemCardapio
+
 
 class Restaurante:
     restaurantes = []
@@ -8,6 +10,7 @@ class Restaurante:
         self._categoria = categoria.upper()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
     
     def __str__(self):
@@ -39,3 +42,29 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media = round(soma_das_notas / quantidade_de_notas, 1)
         return media
+    
+#    def adicionar_bebida_no_cardapio(self, bebida):
+#        self._cardapio.append(bebida)
+
+#    def adicionar_prato_no_cardapio(self, prato):
+#        self._cardapio.append(prato)
+
+    def adicionar_no_cardapio(self,item):
+        if isinstance(item,ItemCardapio):
+            self._cardapio.append(item)
+    
+    # o property é só pra indicar q vai ser uma função de leituraaaaaaaaaaaaaaaaaaaaaaaaaa
+    @property    
+    def exibir_cardapio(self):
+        print(f'Cardapio do restaurante: {self._nome}\n')
+        # para cada i em item, pegando sua posição começando do 1
+        for i, item in enumerate(self._cardapio,start=1):
+            
+
+            # se tiver (has) atributo(attr)
+            if hasattr(item, 'descricao'):  
+                mensagem = f'{i}. Nome:{item._nome} | Preço R${item._preco}  | Descrição : {item.descricao}'
+                print(mensagem)
+            else:
+                mensagem_bebida = f'{i}. Nome:{item._nome} | Preço R${item._preco} | Tamanho : {item.tamanho}'
+                print(mensagem_bebida)
