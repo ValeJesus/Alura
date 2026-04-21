@@ -3,7 +3,6 @@ def contar(texto):
     contador = 0
     palavras = []
 
-
     for s in split:
         if len(s) > 10:
             contador += 1
