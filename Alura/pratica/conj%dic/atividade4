@@ -1,0 +1,22 @@
+"""Verifica se as permissões solicitadas são um subconjunto das permissões principais.
+
+O programa solicita duas listas de permissões separadas por vírgulas,
+converte para conjuntos (ignorando maiúsculas/minúsculas e espaços extras),
+e verifica se todas as permissões solicitadas estão contidas nas principais.
+"""
+
+# Solicita permissões principais, converte para minúsculas, divide por vírgulas,
+# remove espaços extras e cria um conjunto
+permissoes_principais = set(p.strip() for p in input("Permissões principais: ").lower().split(','))
+
+# Faz o mesmo para as permissões solicitadas
+permissoes_solicitadas = set(p.strip() for p in input("Permissões solicitadas: ").lower().split(','))
+
+# Verifica se as solicitadas são um subconjunto das principais
+eh_subconjunto = permissoes_solicitadas.issubset(permissoes_principais)
+
+# Exibe o resultado da verificação
+if eh_subconjunto:
+    print("As permissões solicitadas fazem parte das permissões principais.")
+else:
+    print("As permissões solicitadas não fazem parte das permissões principais.")

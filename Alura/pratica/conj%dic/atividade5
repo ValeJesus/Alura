@@ -1,0 +1,28 @@
+
+"""Combina tarefas de duas equipes e permite remover uma tarefa específica.
+
+O programa une as tarefas das equipes A e B em um conjunto único,
+solicita uma tarefa para remover (ignorando maiúsculas/minúsculas),
+e exibe a lista final de tarefas após a remoção, se aplicável.
+"""
+
+# Define as tarefas da equipe A como um conjunto
+equipe_a = {"planejar reunião", "revisar documento", "testar sistema"}
+
+# Define as tarefas da equipe B como um conjunto
+equipe_b = {"testar sistema", "implementar funcionalidade", "corrigir bug"}
+
+# Combina as tarefas de ambas as equipes usando união (remove duplicatas automaticamente)
+tarefas_combinadas = equipe_a.union(equipe_b)
+
+# Solicita a tarefa a ser removida e converte para minúsculas para comparação insensível a caso
+tarefa_remover = input("Tarefa a ser removida: ").lower()
+
+# Verifica se a tarefa está presente no conjunto combinado
+if tarefa_remover in tarefas_combinadas:
+    # Remove a tarefa do conjunto
+    tarefas_combinadas.remove(tarefa_remover)
+
+# Exibe as tarefas finais
+print(f"Tarefas finais: {tarefas_combinadas}")
+ 
